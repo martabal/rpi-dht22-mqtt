@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/light",
+    "crates/rpi-gpio",
+    "crates/temperature",
+]
+
+[workspace.package]
+authors = ["martabal"]
+edition = "2021"
+rust-version = "1.83"
+license = "MIT"
+
+[workspace.dependencies]
+dotenvy = "0.15.7"
+rppal = "0.22.1"
+rumqttc = "0.24.0"
+rustls-pemfile = "2.2.0"
+serde_json = "1.0.137"
+tokio = { version = "1.36", features = ["rt", "macros", "io-util", "net", "time"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = 'abort'
+strip = "symbols"
+
+[workspace.lints.clippy]
+enum_glob_use = { level = "deny", priority = 2 }
+pedantic = { level = "deny", priority = 1 }
+nursery = { level = "deny", priority = 0 }
