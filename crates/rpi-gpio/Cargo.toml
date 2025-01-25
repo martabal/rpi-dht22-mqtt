@@ -1,0 +1,19 @@
+[package]
+name = "rpi-gpio"
+version = "0.1.0"
+authors.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[lib]
+crate-type = ["lib"]
+
+[dependencies]
+rppal =  { workspace = true }
+rumqttc = { workspace = true }
+rustls-pemfile = { workspace = true }
+tracing = { workspace = true }
